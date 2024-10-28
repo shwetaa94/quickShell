@@ -48,7 +48,7 @@ const KanbanColumn = ({ title, tickets, groupBy }) => {
 
   const renderTitle = (title) => {
     if (groupBy === "userId") {
-      return users.find((user) => user.id === title).name;
+      return users.find((user) => user.id === title)?.name;
     }
     return title;
   };
