@@ -6,8 +6,12 @@ import { groupTickets } from '../utils/groupTickets';
 //backlog
 const KanbanBoard = () => {
   const [tickets, setTickets] = useState([]);
-  const [grouping, setGrouping] = useState('status');
-  const [ordering, setOrdering] = useState('priority');
+  const [grouping, setGrouping] = useState(() => 
+    localStorage.getItem('kanbanGrouping') || 'status'
+  );
+  const [ordering, setOrdering] = useState(() => 
+    localStorage.getItem('kanbanOrdering') || 'priority'
+  );
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
@@ -18,10 +22,19 @@ const KanbanBoard = () => {
     loadTickets();
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem('kanbanGrouping', grouping);
-    localStorage.setItem('kanbanOrdering', ordering);
-  }, [grouping, ordering]);
+  // Save grouping preference whenever it changes
+  const handleGroupingChange = (e) => {
+    const newGrouping = e.target.value;
+    setGrouping(newGrouping);
+    localStorage.setItem('kanbanGrouping', newGrouping);
+  };
+
+  // Save ordering preference whenever it changes
+  const handleOrderingChange = (e) => {
+    const newOrdering = e.target.value;
+    setOrdering(newOrdering);
+    localStorage.setItem('kanbanOrdering', newOrdering);
+  };
 
   const groupedTickets = groupTickets(tickets, grouping, ordering);
 
@@ -85,7 +98,7 @@ const KanbanBoard = () => {
                   borderRadius: '4px'
                 }}
                 value={grouping}
-                onChange={(e) => setGrouping(e.target.value)}
+                onChange={handleGroupingChange}
               >
                 <option value="status">Status</option>
                 <option value="userId">User</option>
@@ -108,7 +121,7 @@ const KanbanBoard = () => {
                   borderRadius: '4px'
                 }}
                 value={ordering}
-                onChange={(e) => setOrdering(e.target.value)}
+                onChange={handleOrderingChange}
               >
                 <option value="priority">Priority</option>
                 <option value="title">Title</option>
