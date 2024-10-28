@@ -86,7 +86,7 @@ const KanbanColumn = ({ title, tickets, groupBy }) => {
           />
         </div>
       </div>
-      <div >
+      <div style={{ overflowY: "auto", maxHeight: "calc(100vh - 200px)" }}>
         {tickets.map((ticket) => (
           <KanbanCard key={ticket.id} ticket={ticket} />
         ))}
