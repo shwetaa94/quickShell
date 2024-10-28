@@ -41,11 +41,15 @@ const KanbanCard = ({ ticket }) => {
           className="dot-menu"
           style={{ marginRight: "8px" }}
         />
-        <img
-          src={getStatusIcon(ticket.status)}
-          alt={ticket.status}
-          className="status-icon"
-          style={{ marginRight: "8px" }}
+        <div
+          className="status-circle"
+          style={{
+            width: "12px",
+            height: "12px",
+            borderRadius: "50%",
+            backgroundColor: "#D3D3D3",
+            marginRight: "8px"
+          }}
         />
         <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{ticket.tag.join(", ")}</span>
       </div>
