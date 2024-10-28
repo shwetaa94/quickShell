@@ -36,10 +36,10 @@ const KanbanColumn = ({ title, tickets, groupBy }) => {
       default:
         return '/icons/icons_FEtask/No-priority.svg';
     }
-  }; // Added missing closing brace
+  };
 
   return (
-    <div className="kanban-column">
+    <div className="kanban-column" style={{ height: '100%', overflowY: 'auto', flex: '1' }}>
       <div className="column-header">
         {groupBy === 'status' && (
           <img src={getStatusIcon(title)} alt={title} className="header-status-icon" />
@@ -53,9 +53,11 @@ const KanbanColumn = ({ title, tickets, groupBy }) => {
           <img src="icons/icons_FEtask/3 dot menu.svg" alt="Menu" className="header-icon" />
         </div>
       </div>
-      {tickets.map((ticket) => (
-        <KanbanCard key={ticket.id} ticket={ticket} />
-      ))}
+      <div style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 200px)' }}>
+        {tickets.map((ticket) => (
+          <KanbanCard key={ticket.id} ticket={ticket} />
+        ))}
+      </div>
     </div>
   );
 };

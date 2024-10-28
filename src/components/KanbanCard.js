@@ -1,53 +1,53 @@
-import React from 'react';
-import '../styles/KanbanCard.css';
+import React from "react";
+import "../styles/KanbanCard.css";
 
 const KanbanCard = ({ ticket }) => {
-  const priorityLabels = ['No Priority', 'Low', 'Medium', 'High', 'Urgent'];
-
   const getStatusIcon = (status) => {
     switch (status.toLowerCase()) {
-      case 'todo':
-        return '/icons/icons_FEtask/To-do.svg';
-      case 'in progress':
-        return '/icons/icons_FEtask/in-progress.svg';
-      case 'completed':
-        return '/icons/icons_FEtask/Done.svg';
-      case 'cancelled':
-        return '/icons/icons_FEtask/Cancelled.svg';
-      case 'backlog':
-        return '/icons/icons_FEtask/Backlog.svg';
+      case "todo":
+        return "/icons/icons_FEtask/To-do.svg";
+      case "in progress":
+        return "/icons/icons_FEtask/in-progress.svg";
+      case "completed":
+        return "/icons/icons_FEtask/Done.svg";
+      case "cancelled":
+        return "/icons/icons_FEtask/Cancelled.svg";
+      case "backlog":
+        return "/icons/icons_FEtask/Backlog.svg";
       default:
-        return '/icons/icons_FEtask/To-do.svg';
+        return "/icons/icons_FEtask/To-do.svg";
     }
   };
 
   return (
-    <div className="kanban-card">
-      <div className="card-header">
-        <input 
+    <div className="kanban-card" style={{ height: "60px", display: "flex", flexDirection: "column", overflow: "hidden", boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)" }}>
+      <div className="card-header" style={{ display: "flex", alignItems: "center", gap: "8px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+        <input
           type="checkbox"
           className="card-checkbox"
-          onChange={(e) => console.log(`Card ${ticket.id} checked:`, e.target.checked)}
+          onChange={(e) =>
+            console.log(`Card ${ticket.id} checked:`, e.target.checked)
+          }
         />
-        <h3>{ticket.title}</h3>
+        <h4 style={{ fontSize: "14px", fontWeight: "700", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{ticket.title}</h4>
       </div>
-      <p></p>
-      <span className={`priority-label priority-${ticket.priority}`}>
-        {priorityLabels[ticket.priority]}
-      </span>
-      {/* Add the feature request label */}
-      <div className="feature-request">
-        <img 
-          src="/icons/icons_FEtask/3 dot menu.svg" 
-          alt="menu" 
+      <div
+        className="feature-request"
+        style={{ display: "flex", alignItems: "center", gap: "8px", padding: "4px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
+      >
+        <img
+          src="/icons/icons_FEtask/3 dot menu.svg"
+          alt="menu"
           className="dot-menu"
+          style={{ marginRight: "8px" }}
         />
-        <img 
-          src={getStatusIcon(ticket.status)} 
-          alt={ticket.status} 
+        <img
+          src={getStatusIcon(ticket.status)}
+          alt={ticket.status}
           className="status-icon"
+          style={{ marginRight: "8px" }}
         />
-        {ticket.tag.join(', ')}
+        <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{ticket.tag.join(", ")}</span>
       </div>
     </div>
   );

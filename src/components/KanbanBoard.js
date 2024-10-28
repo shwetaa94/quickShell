@@ -122,7 +122,7 @@ const KanbanBoard = () => {
         <KanbanColumn 
           key={groupKey} 
           title={groupKey} 
-          tickets={groupedTickets[groupKey]} 
+          tickets={groupedTickets[groupKey]}
           groupBy={grouping}  // Add this prop
         />
       ))}
