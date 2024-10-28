@@ -48,6 +48,8 @@ const KanbanCard = ({ ticket }) => {
     return colors[Math.floor(Math.random() * colors.length)];
   };
 
+  const isLargeTitle = ticket.title.length > 15; // Adjust the length as needed
+
   return (
     <div
       className="kanban-card"
@@ -61,51 +63,51 @@ const KanbanCard = ({ ticket }) => {
       }}
     >
       <div
-        className="initials-icon"
-        style={{
-          position: "absolute",
-          top: "15px", // Adjusted to move it down
-          right: "8px",
-          width: "24px",
-          height: "24px",
-          borderRadius: "50%",
-          backgroundColor: getRandomColor(),
-          color: "#fff",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: "12px",
-        }}
-      >
-        {getInitials(username)}
-      </div>
-      <div
         className="card-header"
         style={{
           display: "flex",
           alignItems: "center",
-          gap: "8px",
+          justifyContent: "space-between",
           overflow: "hidden",
           textOverflow: "ellipsis",
           whiteSpace: "nowrap",
+          width: "100%", // Ensure full width for proper layout
         }}
       >
-        <input
-          type="checkbox"
-          className="card-checkbox"
-          onChange={(e) =>
-            console.log(`Card ${ticket.id} checked:`, e.target.checked)
-          }
-        />
-        <div style={{ maxWidth: "80%", overflowWrap: "break-word", whiteSpace: "normal" }}>
-          <h4
-            style={{
-              fontSize: "14px",
-              fontWeight: "700",
-            }}
-          >
-            {ticket.title}
-          </h4>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", width: "70%" }}>
+          <input
+            type="checkbox"
+            className="card-checkbox"
+            onChange={(e) =>
+              console.log(`Card ${ticket.id} checked:`, e.target.checked)
+            }
+          />
+          <div style={{ maxWidth: "80%", overflowWrap: "break-word", whiteSpace: "normal" }}>
+            <h4
+              style={{
+                fontSize: "14px",
+                fontWeight: "700",
+              }}
+            >
+              {ticket.title}
+            </h4>
+          </div>
+        </div>
+        <div
+          className="initials-icon"
+          style={{
+            width: isLargeTitle ? "24px" : "30px", // Adjusted width for larger title
+            height: isLargeTitle ? "24px" : "30px", // Adjusted height for larger title
+            borderRadius: "50%", // Changed to 50% for a perfect circle
+            backgroundColor: getRandomColor(),
+            color: "#fff",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "14px", // Increased font size for better visibility
+          }}
+        >
+          {getInitials(username)}
         </div>
       </div>
       <div
