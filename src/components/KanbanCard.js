@@ -52,7 +52,7 @@ const KanbanCard = ({ ticket }) => {
     <div
       className="kanban-card"
       style={{
-        height: "60px",
+        height: "auto", // Changed height from 80px to auto
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",
@@ -97,17 +97,16 @@ const KanbanCard = ({ ticket }) => {
             console.log(`Card ${ticket.id} checked:`, e.target.checked)
           }
         />
-        <h4
-          style={{
-            fontSize: "14px",
-            fontWeight: "700",
-            overflowWrap: "break-word", // Allow text to wrap to the next line
-            whiteSpace: "normal", // Allow text to wrap
-            maxWidth: "80%", // Decreased width
-          }}
-        >
-          {ticket.title}
-        </h4>
+        <div style={{ maxWidth: "80%", overflowWrap: "break-word", whiteSpace: "normal" }}>
+          <h4
+            style={{
+              fontSize: "14px",
+              fontWeight: "700",
+            }}
+          >
+            {ticket.title}
+          </h4>
+        </div>
       </div>
       <div
         className="feature-request"
