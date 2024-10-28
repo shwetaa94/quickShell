@@ -1,0 +1,54 @@
+.kanban-column {
+    background-color: #f3f4f6;
+    padding: 16px;
+    border-radius: 8px;
+    width: 300px;
+  }
+  
+  .kanban-column h2 {
+    font-size: 1.2em;
+    margin-bottom: 12px;
+  }
+  /* Styles for the Display button */
+.display-button {
+  height: 30px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+.display-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 200px;
+}
+
+/* Label and select style for Grouping and Ordering */
+.dropdown-label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: #666;
+}
+
+.dropdown-select {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}

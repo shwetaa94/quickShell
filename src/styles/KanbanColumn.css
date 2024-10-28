@@ -1,0 +1,36 @@
+.kanban-board {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+  }
+  
+  .kanban-controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.header-icons {
+  display: flex;
+  gap: 8px;
+}
+
+.header-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.header-status-icon,
+.header-priority-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
